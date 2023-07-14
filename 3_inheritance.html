@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        class User {
+
+            constructor(nameValue, lastNameValue, emailValue) {
+                this.name = nameValue
+                this.lastName = lastNameValue
+                this.email = emailValue
+                this.active = true
+            }
+
+            updateEmail(newEmail) {
+                this.email = newEmail
+            }
+        }
+
+        const user1 = new User('German', 'Alvarez', 'ger@msn.es')
+
+        console.log('El correo de', user1.name, 'es', user1.email)
+        user1.updateEmail('popinoislove@msn.es')
+        console.log('El correo de', user1.name, 'ahora es', user1.email)
+
+
+
+
+        class Player extends User {
+
+            constructor(nameValue, lastNameValue, emailValue, nickValue, livesValue) {
+                super(nameValue, lastNameValue, emailValue)
+                this.nick = nickValue
+                this.lives = livesValue
+                this.tokens = 100
+            }
+
+            spendTokens(charge) {
+                if (this.tokens >= charge) {
+                    this.tokens -= charge
+                } else {
+                    throw new Error(`No puedes gastar ${charge} tokens ya que solo te quedan ${this.tokens}`)
+                }
+            }
+        }
+
+        const player1 = new Player('Yasmina', 'Moreno', 'yas@msn,es', 'rUbiSelA_99', 100)
+        console.log('La jugadora', player1.nick, 'en realidad se llama', player1.name, 'y su correo es', player1.email)
+
+        player1.updateEmail('layas@msn.es')
+        console.log('Y ahora su correo es', player1.email)
+
+        // player1.spendTokens(5000)
+
+
+
+
+        class Witch extends Player {
+
+            constructor(nameValue, lastNameValue, emailValue, nickValue, livesValue, spellValue) {
+                super(nameValue, lastNameValue, emailValue, nickValue, livesValue)
+                this.spell = spellValue
+            }
+            makeSpell() {
+                console.warn('La bruja', this.nick, '(que en realidad se llama', this.name, '), te atacó con su hechizo', this.spell)
+            }
+        }
+
+        const witch1 = new Witch('Charo', 'García', 'sjhius@msn.es', 'RuBiSeLah_95', 10, 'Abra cadabra')
+
+        witch1.makeSpell()
+
+
+
+
+
+        class Gnome extends Player {
+
+            constructor(nameValue, lastNameValue, emailValue, nickValue, livesValue, attackValue) {
+                super(nameValue, lastNameValue, emailValue, nickValue, livesValue)
+                this.attack = attackValue
+            }
+
+            attackNow() {
+                console.warn('el gnomo', this.nick, 'te atacó con', this.attack, '... ¡QUÉ GUARRO!')
+            }
+        }
+
+        const gnome1 = new Gnome('Raul', 'Whatever', 'djghs@msn,es', 'mÒ_óreNiKoh_23', 100, 'ESCUPITAJOS')
+
+        gnome1.attackNow()
+
+
+
+    </script>
+</body>
+
+</html>

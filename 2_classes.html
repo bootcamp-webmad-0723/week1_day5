@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        class Person {
+
+            // El método especial constructor está conectado a la instancia
+            constructor(firstNameValue, lastNameValue, ageValue, heightValue, hobbiesValue) {
+                this.firstName = firstNameValue
+                this.lastName = lastNameValue
+                this.age = ageValue
+                this.height = heightValue
+                this.hobbies = hobbiesValue
+                this.alive = true
+            }
+
+            grow(extraYears = 1) {
+                this.age += extraYears
+            }
+
+            learnNewHobby(newHobby) {
+                this.hobbies.push(newHobby)
+            }
+        }
+
+
+        const person1 = new Person('Alejandro', 'Reche', 37, 1.76, ['gadgets', 'paddle'])
+        const person2 = new Person('Isabella', 'Paiva', 37, 1.86, ['gadgets', 'paddle'])
+
+        console.log(person1)
+
+        console.log(`Me llamo ${person1.firstName} y mido ${person1.height} m.`)
+
+        console.log('Yo tenía', person1.age, 'años')
+        person1.grow()
+        console.log('Yo ahora tengo', person1.age, 'años')
+
+        console.log('Yo tenía', person1.hobbies.length, 'hobbies:', person1.hobbies)
+        person1.learnNewHobby('chess')
+        console.log('Yo ahora tengo', person1.hobbies.length, 'hobbies:', person1.hobbies)
+
+    </script>
+</body>
+
+</html>

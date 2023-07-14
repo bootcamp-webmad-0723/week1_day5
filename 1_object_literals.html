@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+        const person = {
+            firstName: 'Germán',
+            lastName: 'Alvarez',
+            weight: 89,
+            height: 1.89,
+            celiac: false,
+            age: 37,
+            job: {
+                title: 'Lead Instructor',
+                company: 'Ironhack',
+                salary: 1000,
+                joined: new Date(2019, 0, 9),
+            },
+            hobbies: ['ski', 'rave', 'beer'],
+            subscriptions: [
+                { service: 'Amazon Prime', cost: 9.99 },
+                { service: 'Glovo Prime', cost: 12.99 },
+                { service: 'Spotify', cost: 14.99 },
+            ],
+            grow(extraYears = 1) {
+                this.age += extraYears      // en un método, this referencia al objeto al que pertenece
+            },
+            learnNewHobby(newHobby) {
+                this.hobbies.push(newHobby)
+            },
+            subscribe(serviceName, serviceCost) {
+                const newSubscription = {
+                    service: serviceName,
+                    cost: serviceCost
+                }
+                this.subscriptions.push(newSubscription)
+            },
+            getSubscriptionsTotal() {
+                let totalCost = 0
+                this.subscriptions.forEach(eachSubscription => totalCost += eachSubscription.cost)
+                return totalCost
+            }
+        }
+
+        console.log(person)
+
+        // Object properties access
+        console.log(`Me llamo ${person.firstName} y mido ${person['height']} m.`)
+        console.log('Mis hobbies son:', person.hobbies)
+
+        // Object custom methods
+        console.log('Yo tenía', person.age, 'años')
+        person.grow()
+        console.log('Yo ahora tengo', person.age, 'años')
+
+        console.log('Yo tenía', person.hobbies.length, 'hobbies:', person.hobbies)
+        person.learnNewHobby('chess')
+        console.log('Yo ahora tengo', person.hobbies.length, 'hobbies:', person.hobbies)
+
+        console.log('Mi gasto en suscripciones es de', person.getSubscriptionsTotal(), '€')
+        person.subscribe('HBO', 9.99)
+        console.log('Y ahora me destoy dejando', person.getSubscriptionsTotal(), '€')
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
